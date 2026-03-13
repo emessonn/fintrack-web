@@ -270,7 +270,7 @@ export function DashboardPage() {
               className='w-full justify-start'
               onClick={openTransactionModal}
             >
-              Novo Lancamento
+              Novo Lançamento
             </Button>
             <Button
               type='button'
@@ -298,8 +298,8 @@ export function DashboardPage() {
 
       <Modal
         open={activeModal === 'transaction'}
-        title='Novo lancamento'
-        description='Registre uma nova entrada ou saida.'
+        title='Novo lançamento'
+        description='Registre uma nova entrada ou saída.'
         onClose={closeModal}
       >
         <TransactionForm

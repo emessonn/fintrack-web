@@ -118,7 +118,7 @@ export function TransactionForm({
   return (
     <Card className='glass animate-fade-up rounded-2xl bg-white/[0.02]'>
       <CardHeader>
-        <CardTitle>Novo lancamento</CardTitle>
+        <CardTitle>Novo lançamento</CardTitle>
       </CardHeader>
       <CardContent>
         <form className='space-y-4' onSubmit={handleSubmit}>
@@ -144,6 +144,7 @@ export function TransactionForm({
               decimalSeparator=','
               decimalScale={2}
               fixedDecimalScale
+              min={0}
             />
           </div>
 
@@ -236,9 +237,9 @@ export function TransactionForm({
           <Button
             type='submit'
             disabled={Boolean(loading)}
-            className='w-full bg-primary text-zinc-900 hover:bg-primary/90'
+            className='w-full bg-primary text-zinc-900 hover:bg-primary/90 py-6'
           >
-            {loading ? 'Salvando...' : 'Salvar lancamento'}
+            {loading ? 'Salvando...' : 'Salvar Lançamento'}
           </Button>
         </form>
       </CardContent>
