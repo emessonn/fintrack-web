@@ -1,73 +1,125 @@
-# React + TypeScript + Vite
+# Fintrack v2
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicacao web para controle financeiro pessoal com autenticacao Google, dashboard com indicadores de gastos e entradas, categorias personalizadas com limite de gasto e fluxo de contas a pagar.
 
-Currently, two official plugins are available:
+## Principais funcionalidades
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+- Dashboard financeiro com filtros por periodo e categoria
+- Cards de resumo (entradas, saidas e saldo)
+- Grafico de entradas vs saidas por dia
+- Grafico de gastos por categoria
+- Alertas de metas de gasto por categoria
+- Cadastro e gestao de categorias com limite opcional
+- Cadastro de lancamentos (entrada e saida)
+- Tabela de transacoes filtrada pelo periodo
+- Fluxo de contas a pagar com recorrencia (semanal, mensal, anual)
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+- React 19 + TypeScript
+- Vite 8
+- Tailwind CSS 3
+- TanStack Query
+- Axios
+- Firebase Auth (Google)
+- Base UI (componentes)
 
-## Expanding the ESLint configuration
+## Requisitos
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+- Node.js 20+
+- npm 10+
+- Backend REST em execucao (API)
+- Projeto Firebase configurado para login Google
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+## Variaveis de ambiente
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+Crie um arquivo .env na raiz:
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+```env
+VITE_API_BASE_URL=http://localhost:3000/api
+
+VITE_FIREBASE_API_KEY=...
+VITE_FIREBASE_AUTH_DOMAIN=...
+VITE_FIREBASE_PROJECT_ID=...
+VITE_FIREBASE_APP_ID=...
 ```
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+Observacoes:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+- VITE_API_BASE_URL aponta para o backend usado por transacoes, categorias e contas a pagar
+- O login Google depende de todas as variaveis VITE_FIREBASE_*
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Como rodar localmente
+
+```bash
+npm install
+npm run dev
 ```
+
+App disponivel em:
+
+- http://localhost:5173
+
+## Scripts
+
+- npm run dev: inicia ambiente de desenvolvimento
+- npm run build: gera build de producao em dist
+- npm run lint: executa lint
+- npm run preview: sobe o build localmente para validacao
+
+## Build de producao
+
+```bash
+npm run build
+npm run preview
+```
+
+## Deploy
+
+Este projeto e um frontend SPA (Vite). Pode ser publicado em Vercel, Netlify, Cloudflare Pages ou Nginx.
+
+### Checklist de deploy
+
+1. Configurar variaveis de ambiente no provedor de deploy
+2. Garantir backend em producao com HTTPS
+3. Configurar CORS no backend para o dominio do frontend
+4. Configurar Firebase Auth com dominio de producao em Authorized domains
+5. Executar build e validar fluxo principal
+
+### Configuracoes recomendadas
+
+- Build command: npm run build
+- Output directory: dist
+- SPA fallback para index.html em rotas nao estaticas
+
+## Contrato esperado de backend
+
+O frontend consome, no minimo, os recursos:
+
+- /transactions
+- /categories
+- /bills
+
+Com autenticacao por token Firebase no header Authorization:
+
+- Authorization: Bearer <token>
+
+## Estrutura resumida
+
+- src/pages: paginas principais (dashboard, login, bills)
+- src/components/finance: componentes de dominio financeiro
+- src/components/ui: componentes base de UI
+- src/hooks: hooks de dados e mutacoes
+- src/lib: clientes de API, auth e utilitarios
+- src/types: tipos de dominio
+
+## Estado atual
+
+- Build de producao validado com sucesso
+- Existe aviso de bundle grande no build (recomendado code splitting futuro)
+
+## Proximos passos sugeridos
+
+1. Adicionar monitoramento de erros (exemplo: Sentry)
+2. Separar ambientes dev, staging e prod
+3. Aplicar lazy loading em paginas/modais para reduzir tamanho do bundle
