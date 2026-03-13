@@ -26,7 +26,7 @@ export function useCreateTransaction(userId: string | undefined) {
   return useMutation({
     mutationFn: async (input: NewTransactionInput) => {
       if (!userId) {
-        throw new Error('Usuario nao autenticado.')
+        throw new Error('Usuário não autenticado.')
       }
 
       return createTransaction(input)

@@ -59,7 +59,7 @@ export function CategoryManager({
       setError(
         createError instanceof Error
           ? createError.message
-          : 'Nao foi possivel cadastrar a categoria.',
+          : 'Não foi possível cadastrar a categoria.',
       )
     }
   }
@@ -73,7 +73,7 @@ export function CategoryManager({
       setError(
         deleteError instanceof Error
           ? deleteError.message
-          : 'Nao foi possivel remover a categoria.',
+          : 'Não foi possível remover a categoria.',
       )
     }
   }
@@ -111,7 +111,7 @@ export function CategoryManager({
       setError(
         err instanceof Error
           ? err.message
-          : 'Nao foi possivel atualizar o limite.',
+          : 'Não foi possível atualizar o limite.',
       )
     }
   }

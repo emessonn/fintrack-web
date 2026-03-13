@@ -40,8 +40,8 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
       <CardContent>
         {transactions.length === 0 ? (
           <div className='rounded-xl border border-dashed border-white/15 bg-black/20 p-6 text-center text-sm text-muted-foreground'>
-            Ainda nao existem lancamentos. Adicione sua primeira entrada ou
-            saida.
+            Ainda não existem lançamentos. Adicione sua primeira entrada ou
+            saída.
           </div>
         ) : (
           <Table>
@@ -72,7 +72,7 @@ export function TransactionsTable({ transactions }: TransactionsTableProps) {
                           : 'border-rose-400/40 bg-rose-500/10 text-rose-300'
                       }
                     >
-                      {transaction.type === 'income' ? 'Entrada' : 'Saida'}
+                      {transaction.type === 'income' ? 'Entrada' : 'Saída'}
                     </Badge>
                   </TableCell>
                   <TableCell className='text-muted-foreground'>

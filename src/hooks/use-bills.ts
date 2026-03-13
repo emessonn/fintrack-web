@@ -31,7 +31,7 @@ export function useCreateBill(userId: string | undefined) {
   return useMutation({
     mutationFn: async (input: NewBillInput) => {
       if (!userId) {
-        throw new Error('Usuario nao autenticado.')
+        throw new Error('Usuário não autenticado.')
       }
       return createBill(input)
     },
@@ -48,7 +48,7 @@ export function useMarkBillAsPaid(userId: string | undefined) {
   return useMutation({
     mutationFn: async (billId: string) => {
       if (!userId) {
-        throw new Error('Usuario nao autenticado.')
+        throw new Error('Usuário não autenticado.')
       }
       return markBillAsPaid(billId)
     },
@@ -65,7 +65,7 @@ export function useDeleteBill(userId: string | undefined) {
   return useMutation({
     mutationFn: async (billId: string) => {
       if (!userId) {
-        throw new Error('Usuario nao autenticado.')
+        throw new Error('Usuário não autenticado.')
       }
       await deleteBill(billId)
     },
@@ -88,7 +88,7 @@ export function useUpdateBillRecurrence(userId: string | undefined) {
       recurrence: BillRecurrence
     }) => {
       if (!userId) {
-        throw new Error('Usuario nao autenticado.')
+        throw new Error('Usuário não autenticado.')
       }
 
       return updateBillRecurrence(billId, recurrence)

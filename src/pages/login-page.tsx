@@ -45,16 +45,16 @@ export function LoginPage() {
           <div className='grid gap-3 sm:grid-cols-2'>
             <div className='glass rounded-xl p-3'>
               <WalletCards className='mb-2 h-4 w-4 text-primary' />
-              <p className='text-sm font-medium'>Lancamentos rapidos</p>
+              <p className='text-sm font-medium'>Lançamentos rápidos</p>
               <p className='text-xs text-muted-foreground'>
-                Cadastro simples para entradas e saidas.
+                Cadastro simples para entradas e saídas.
               </p>
             </div>
             <div className='glass rounded-xl p-3'>
               <ShieldCheck className='mb-2 h-4 w-4 text-cyan-300' />
               <p className='text-sm font-medium'>Dashboard</p>
               <p className='text-xs text-muted-foreground'>
-                Dados dos lancamentos organizados.
+                Dados dos lançamentos organizados.
               </p>
             </div>
           </div>

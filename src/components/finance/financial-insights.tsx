@@ -60,7 +60,7 @@ export function FinancialInsights({
 
   const items = [
     {
-      label: 'Lancamentos',
+      label: 'Lançamentos',
       value: String(stats.txCount),
       sub: 'no periodo',
       icon: Activity,

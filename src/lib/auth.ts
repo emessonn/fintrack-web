@@ -41,7 +41,7 @@ export function listenAuthState(
 export async function signInWithGoogle(): Promise<AuthenticatedUser> {
   if (!isFirebaseConfigured || !auth || !googleProvider) {
     throw new Error(
-      'Firebase nao configurado. Preencha as variaveis VITE_FIREBASE_* para usar login Google.',
+      'Firebase não configurado. Preencha as variáveis VITE_FIREBASE_* para usar login Google.',
     )
   }
 

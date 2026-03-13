@@ -30,7 +30,7 @@ export function useCreateCategory(userId: string | undefined) {
   return useMutation({
     mutationFn: async (input: { name: string; limit?: number }) => {
       if (!userId) {
-        throw new Error('Usuario nao autenticado.')
+        throw new Error('Usuário não autenticado.')
       }
 
       return createCategory(input.name, input.limit)
@@ -57,7 +57,7 @@ export function useUpdateCategoryLimit(userId: string | undefined) {
       limit: number | null
     }) => {
       if (!userId) {
-        throw new Error('Usuario nao autenticado.')
+        throw new Error('Usuário não autenticado.')
       }
 
       return updateCategoryLimit(categoryId, limit)
@@ -78,7 +78,7 @@ export function useDeleteCategory(userId: string | undefined) {
   return useMutation({
     mutationFn: async (categoryId: string) => {
       if (!userId) {
-        throw new Error('Usuario nao autenticado.')
+        throw new Error('Usuário não autenticado.')
       }
 
       await deleteCategory(categoryId)

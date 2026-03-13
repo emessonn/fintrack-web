@@ -241,13 +241,13 @@ export function DashboardPage() {
           <p className='text-sm text-rose-300'>
             {createTransactionMutation.error instanceof Error
               ? createTransactionMutation.error.message
-              : 'Nao foi possivel salvar a transacao.'}
+              : 'Não foi possível salvar a transação.'}
           </p>
         ) : null}
 
         {transactionsQuery.isLoading ? (
           <p className='text-sm text-muted-foreground'>
-            Carregando lancamentos...
+            Carregando lançamentos...
           </p>
         ) : null}
 
@@ -288,7 +288,7 @@ export function DashboardPage() {
           size='icon'
           className='h-14 w-14 rounded-full bg-primary text-zinc-900 shadow-[0_16px_40px_rgba(0,0,0,0.35)] hover:bg-primary/90'
           onClick={() => setIsFabOpen((current) => !current)}
-          aria-label='Abrir acoes rapidas'
+          aria-label='Abrir ações rápidas'
         >
           <Plus
             className={`h-6 w-6 transition ${isFabOpen ? 'rotate-45' : ''}`}

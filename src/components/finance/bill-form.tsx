@@ -22,7 +22,7 @@ const RECURRENCE_OPTIONS: Array<{
   value: BillRecurrence
   label: string
 }> = [
-  { value: 'none', label: 'Nao recorrente' },
+  { value: 'none', label: 'Não recorrente' },
   { value: 'weekly', label: 'Semanal' },
   { value: 'monthly', label: 'Mensal' },
   { value: 'yearly', label: 'Anual' },
