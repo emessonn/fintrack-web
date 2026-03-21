@@ -9,6 +9,7 @@ import {
 } from '@/components/finance/finance-filters'
 import { FinancialInsights } from '@/components/finance/financial-insights'
 import { IncomeExpenseChart } from '@/components/finance/income-expense-chart'
+import { ReportModal } from '@/components/finance/report-modal'
 import { SpendingByCategoryChart } from '@/components/finance/spending-by-category-chart'
 import { SummaryCards } from '@/components/finance/summary-cards'
 import { TransactionForm } from '@/components/finance/transaction-form'
@@ -68,7 +69,7 @@ export function DashboardPage() {
   const [category, setCategory] = useState<TransactionCategory | 'all'>('all')
   const [isFabOpen, setIsFabOpen] = useState(false)
   const [activeModal, setActiveModal] = useState<
-    'transaction' | 'category' | null
+    'transaction' | 'category' | 'report' | null
   >(null)
   const [updatingLimitId, setUpdatingLimitId] = useState<string | null>(null)
   const fabContainerRef = useRef<HTMLDivElement | null>(null)
@@ -166,6 +167,11 @@ export function DashboardPage() {
   function openCategoryModal() {
     setIsFabOpen(false)
     setActiveModal('category')
+  }
+
+  function openReportModal() {
+    setIsFabOpen(false)
+    setActiveModal('report')
   }
 
   function closeModal() {
@@ -280,6 +286,14 @@ export function DashboardPage() {
             >
               Criar Categoria
             </Button>
+            <Button
+              type='button'
+              variant='outline'
+              className='w-full justify-start'
+              onClick={openReportModal}
+            >
+              Gerar Relatório
+            </Button>
           </div>
         ) : null}
 
@@ -333,6 +347,14 @@ export function DashboardPage() {
           onUpdateLimit={handleUpdateCategoryLimit}
         />
       </Modal>
+
+      {activeModal === 'report' && (
+        <ReportModal
+          transactions={filteredTransactions}
+          period={period}
+          onClose={closeModal}
+        />
+      )}
     </AppShell>
   )
 }
